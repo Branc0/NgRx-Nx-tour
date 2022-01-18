@@ -1,6 +1,32 @@
 {
   "version": 1,
   "projects": {
+    "admin": {
+      "projectType": "library",
+      "root": "libs/admin",
+      "sourceRoot": "libs/admin/src",
+      "prefix": "packt",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/admin"],
+          "options": {
+            "jestConfig": "libs/admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/admin/src/**/*.ts",
+              "libs/admin/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "tour": {
       "projectType": "application",
       "root": "apps/tour",
@@ -9,19 +35,14 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/tour",
             "index": "apps/tour/src/index.html",
             "main": "apps/tour/src/main.ts",
             "polyfills": "apps/tour/src/polyfills.ts",
             "tsConfig": "apps/tour/tsconfig.app.json",
-            "assets": [
-              "apps/tour/src/favicon.ico",
-              "apps/tour/src/assets"
-            ],
+            "assets": ["apps/tour/src/favicon.ico", "apps/tour/src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "apps/tour/src/styles.css"
@@ -90,9 +111,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/tour"
-          ],
+          "outputs": ["coverage/apps/tour"],
           "options": {
             "jestConfig": "apps/tour/jest.config.js",
             "passWithNoTests": true
@@ -120,20 +139,14 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/tour-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/tour-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "tour"
-      ]
+      "implicitDependencies": ["tour"]
     },
     "visitor": {
       "projectType": "library",
@@ -143,9 +156,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/visitor"
-          ],
+          "outputs": ["coverage/libs/visitor"],
           "options": {
             "jestConfig": "libs/visitor/jest.config.js",
             "passWithNoTests": true

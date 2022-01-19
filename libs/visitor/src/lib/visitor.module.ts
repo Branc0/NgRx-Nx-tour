@@ -8,8 +8,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { PoiModule } from 'libs/poi/src';
+import { PoiListComponent } from './poi-list/poi-list.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
+  declarations: [VisitorComponent, PoiListComponent, MapComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -18,12 +23,13 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    PoiModule,
+    GoogleMapsModule,
     RouterModule.forChild([
       {
         path: '', component: VisitorComponent
       }
     ])
   ],
-  declarations: [VisitorComponent],
 })
 export class VisitorModule {}
